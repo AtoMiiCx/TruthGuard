@@ -1,9 +1,6 @@
 <template>
   <MenuHeader />
   <div class="container">
-    <div class="bg"></div>
-    <div class="bg"></div>
-    <div class="bg"></div>
     <h1 class="welcome">Welcome to TruthGuard</h1>
     <div class="div1">
       <p class="text t">The proliferation of fake news, particularly in the realm of politics, has reached alarming proportions,
@@ -25,8 +22,8 @@
     </div>
     
     <h1 class="welcome">How does it works ?</h1>
-
-    <p class="text t2">Let's dive deeper into the functionality of our fact-checking solution. Our system employs a multi-faceted 
+    <div class="div3">
+      <p class="text t2">Let's dive deeper into the functionality of our fact-checking solution. Our system employs a multi-faceted 
       approach to evaluate the authenticity of a given URL. The first block focuses on source checking, where we examine the 
       reliability and reputation of the website or platform hosting the content. This helps establish the initial credibility 
       of the information.
@@ -41,10 +38,15 @@
       susceptibility to containing fake news. This percentage serves as a quick reference point for users to gauge the credibility 
       of the information they encounter online. We believe that empowering individuals with the tools to make informed decisions 
       is crucial in the fight against fake news.
-    </p>
-    <p class="text t3">With TruthGuard, we aim to combat the dissemination of misinformation and foster a more informed and 
-      responsible digital community. Together, let's stand against fake news and prioritize the pursuit of truth.</p>
+      </p>
+    </div>
+    <div class="div4">
+      <p class="text t3">With TruthGuard, we aim to combat the dissemination of misinformation and foster a more informed and 
+      responsible digital community. Together, let's stand against fake news and prioritize the pursuit of truth.
+      </p>
+    </div>
   </div>
+  <img src="@/assets/truthguard.png" alt="TruthGuard logo" id="logo">
   <testButton />
   <div class="footer">
     <p>footer</p>
@@ -100,8 +102,6 @@ html {
   font-size: 50px;
   color: white;
   display: flex;
-  position: sticky;
-  top: 0;
   margin-top: 60px;
   margin-bottom: 60px;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -144,12 +144,44 @@ html {
 
 .t2 {
   background: #7c7287;
-  margin-bottom: 130px;
+  margin-bottom: 70px;
+}
+
+.div3{
+  background: #7c7287;
+  margin-left: -500px;
+  margin-right: -500px;
+  padding-top: 50px;
+  padding-bottom: 1px;
+}
+
+.div4{
+  background: #230903;
+  margin-left: -500px;
+  margin-right: -500px;
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+
+#logo{
+  height: 170px;
+  /*center the logo*/
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: all .2s ease-out;
+  background-color: #a7c6da;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .footer {
+  /*leave no space between the footer and the last element*/
+  margin-top: auto;
   background: #7c7287;
-  padding: 100px;
+  padding: 40px;
   margin-top: 150px;
 }
 </style>
