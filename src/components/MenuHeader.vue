@@ -15,6 +15,9 @@ export default { name: 'MenuHeader' }
 <style scoped>
 .navbar{
     display: flex;
+    /*make this header sticky while scrolling down the page*/
+    position: sticky;
+    top: 0;
     margin-bottom: 20px;
     align-items: center;
     justify-content: space-between;
