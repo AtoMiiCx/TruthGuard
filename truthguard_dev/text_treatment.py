@@ -1,12 +1,12 @@
 import requests
 import re
-import string
-from nltk.corpus import stopwords
+import nltk
 from bs4 import BeautifulSoup
 import csv
-from nltk.tokenize import word_tokenize
-import nltk
 
+nltk.download('stopwords')
+
+from nltk.corpus import stopwords
 
 def nettoyer_url(url, fichier_csv):
     # Récupérer le contenu HTML de l'URL
