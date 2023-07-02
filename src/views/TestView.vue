@@ -1,6 +1,7 @@
 <template>
     <MenuHeader />
     <input v-model="text" class="testinput" type="text" placeholder="Enter a valid url to test ...">
+    
 </template>
 
 <script>
@@ -35,6 +36,8 @@ export default {
     background-position: 3% 50%;
     margin-right: 40px;
     margin-left: 50px;
+    margin-top: 50px;
+    
     filter: drop-shadow(6px 2px 24px rgba(0, 0, 0, 0.13));
     background-size: 15px;
     background-repeat: no-repeat;

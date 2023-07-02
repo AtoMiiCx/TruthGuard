@@ -1,5 +1,5 @@
 <template>
-  <router-link class="testbtn" role="button" to="/test" >Test TruthGuard</router-link>
+  <router-view class="testbtn" to="/test">Test TruthGuard</router-view>
 </template>
 
 <script>

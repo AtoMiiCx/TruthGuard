@@ -15,25 +15,45 @@ export default { name: 'MenuHeader' }
 <style scoped>
 .navbar{
     display: flex;
-    margin-bottom: 20px;
+    background-blend-mode: darken;
+    position: sticky;
+    top: 0;
     align-items: center;
     justify-content: space-between;
+    height: 100px;
+    padding: 10px 48px 0 0;
+    width: 100%;
 }
 
 #logo {
-height: 145px;
+    height: 70px;
+    transition: all .2s ease-out;
+    background-color: #a7c6da;
+    padding: 10px 10px 10px 15px;
+    border-radius: 20px;
+    margin-left: 30px;
+}
+
+#logo:hover {
+    transform: scale(1.2);
 }
 
 .navigation {
     color: #7c7287;
+    font-size: 20px;
     margin: 10px;
     text-decoration: none;
     text-align: left;
     transition: all .2s ease-out;
+    background-color: #a7c6da;
+    padding: 10px;
+    border-radius: 10px;
+
 }
 
 .navigation:hover {
     color: white;
     font-weight: bold;
+    font-size: 30px;
 }
 </style>
