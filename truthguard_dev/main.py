@@ -1,20 +1,21 @@
 import pandas as pd
+import numpy as np
 import manipulation as mp
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 import text_treatment as tt
+import allure_generale as ag
+import source_verify as sv
 
-# https://www.kaggle.com/code/benroshan/fake-news-classifier-lstm/notebook
 
 def main():
-
     clean_data = pd.read_csv('clean_data.csv')
     output_csv = "C:/Users/adrie/PycharmProjects/pythonProject/output_url.csv"
-    url = "https://www.independent.co.uk/news/people/donald-trump-new-year-message-tweet-enemies-a7503346.html"
-    article_csv = "C:/Users/adrie/PycharmProjects/pythonProject/article_brut.csv"
+    url = input("enter the url you want to test :\n")
+    article_csv = "C:/Users/adrie\PycharmProjects\pythonProject\TruthGuard/truthguard_dev/article_csv.csv"
 
-#------     MODEL PREPARATION     ------
+    # ------     MODEL PREPARATION     ------
 
     # Diviser les données en ensemble d'entraînement et ensemble de test
     X = clean_data['news']
@@ -33,30 +34,39 @@ def main():
     # Évaluation du modèle
     accuracy = model.score(X_test_vectorized, y_test)
 
-
-# -----    TEXT TREATMENT     -----
+    # -----    TEXT TREATMENT     -----
 
     new_data = tt.nettoyer_url(url, article_csv)
-    # Charger les nouvelles données à partir d'un fichier CSV
-    # new_data = pd.read_csv('article_csv.csv', encoding='latin-1')
 
     # Prétraitement des nouvelles données
-    new_data_clean = tt.clean_text(new_data)  # Utiliser la fonction clean_text du fichier text_treatment.py
-    new_data_list = [new_data]  # Créer une liste contenant le texte du document
-    new_data_vectorized = vectorizer.transform(new_data_list)  # Vectoriser la liste contenant le texte
 
-    # Vectorisation des nouvelles données
-    #new_data_vectorized = vectorizer.transform(new_data)
+    clean_data = tt.clean_text(new_data)
+    new_data_list = [clean_data]  # Créer une liste contenant le texte du document)
+    new_data_vectorized = vectorizer.transform(new_data_list)
 
     # Prédiction de la véracité des nouvelles données
     predictions = model.predict(new_data_vectorized)
-    print(predictions)
+
+    if np.array_equal(predictions, [0]):
+        print("article is fake")
+    elif np.array_equal(predictions, [1]):
+        print('article is true')
+    else:
+        print('cannot give prediction')
+
+    # ------     ALLURE GENERALE     ------
+
+    # Détecter la langue du texte
+    lang = ag.detect_language(clean_data)
+
+    # Afficher la langue détectée
+    print("Detected language :", lang)
+
+    # ------     VERIFY SOURCE     ------
+
+    site, status = sv.get_site_status(url)
+    print('the website ', site, ' is ', status)
 
 
-if __name__== "__main__":
+if __name__ == "__main__":
     main()
-
-
-
-
-
