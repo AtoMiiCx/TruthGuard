@@ -1,8 +1,8 @@
 import csv
 from flask import Flask, jsonify
+from flask_cors import CORS
 from firebase_admin import credentials, firestore
 import firebase_admin
-import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
@@ -11,6 +11,7 @@ import allure_generale as ag
 import source_verify as sv
 
 app = Flask(__name__)
+CORS(app)
 
 # Initialize Firebase Admin SDK
 cred = credentials.Certificate("truthguard-firebase-adminsdk-a805b-055db633c1.json")
@@ -69,10 +70,9 @@ def get_x_y():
 #    upload_articles_data(articles_json)
 
 
-@app.route('/verify', methods=['GET'])
+@app.route('/verify', methods=['GET', 'POST'])
 def verify_article():
-    url = input("enter the url you want to test :\n")
-    article_csv = "C:/Users/esteb/OneDrive/Documents/Programming/Truthguard_true/TruthGuard/truthguard_dev/article_csv.csv"
+    url = requests.json.get('url')
 
     # ------     MODEL PREPARATION     ------
 
@@ -94,7 +94,7 @@ def verify_article():
 
     # -----    TEXT TREATMENT     -----
 
-    new_data = tt.nettoyer_url(url, article_csv)
+    new_data = tt.nettoyer_url(url)
 
     # Prétraitement des nouvelles données
 

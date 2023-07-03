@@ -1,5 +1,5 @@
 <template>
-  <router-view class="testbtn" to="/test">Test TruthGuard</router-view>
+  <router-link to="/test" class="testbtn">Test TruthGuard</router-link>
 </template>
 
 <script>
@@ -9,6 +9,7 @@ export default {
 </script>
 
 <style>
+
 .testbtn{  
   padding: 1rem 3.2rem;
   text-align: center;

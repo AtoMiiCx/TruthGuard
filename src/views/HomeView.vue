@@ -46,8 +46,11 @@
       </p>
     </div>
   </div>
+
   <img src="@/assets/truthguard.png" alt="TruthGuard logo" id="logo">
+
   <testButton />
+  
   <div class="footer">
     <p>footer</p>
   </div>
