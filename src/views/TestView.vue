@@ -4,11 +4,11 @@
     <button id="testbtn" @click="verifyArticle">Check it !</button>
     <div class="result-box">
       <h2>Prediction</h2>
-      <p>{{ prediction }}</p>
+      <p>Prediction : {{ prediction }}</p>
     </div>
     <div class="result-box">
       <h2>Detected Language</h2>
-      <p>{{ language }}</p>
+      <p>Language is {{ language }}</p>
     </div>
     <div class="result-box">
       <h2>Website Status</h2>
@@ -42,11 +42,12 @@ export default {
                 url: this.url, // Pass the input URL to the API
             })
         .then(response => {
+            console.log(response);
             const data = response.data;
-            this.prediction = data.prediction;
-            this.language = data.language;
-            this.site = data.site;
-            this.status = data.status;
+            this.prediction = data[0]['Prediction'];
+            this.language = data[0]['Language'];
+            this.site = data[0]['Site'];
+            this.status = data[0]['Status'];
             
         })
         .catch(error => {
@@ -84,6 +85,7 @@ export default {
 
 .result-box {
     border: 1px solid #ccc;
+    background-color: #ae4b55;
     padding: 10px;
     margin-bottom: 10px;
 }

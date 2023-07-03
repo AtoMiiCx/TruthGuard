@@ -1,17 +1,18 @@
 import csv
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 from firebase_admin import credentials, firestore
 import firebase_admin
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
+import requests
 import text_treatment as tt
 import allure_generale as ag
 import source_verify as sv
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, origins='http://localhost:8080')
 
 # Initialize Firebase Admin SDK
 cred = credentials.Certificate("truthguard-firebase-adminsdk-a805b-055db633c1.json")
@@ -72,7 +73,7 @@ def get_x_y():
 
 @app.route('/verify', methods=['GET', 'POST'])
 def verify_article():
-    url = requests.json.get('url')
+    url = request.json.get('url')
 
     # ------     MODEL PREPARATION     ------
 
@@ -122,10 +123,10 @@ def verify_article():
     site, status = sv.get_site_status(url)
 
     return jsonify({
-        'Prediction: ': trueness,
-        'Detected language: ': lang,
-        'The website ': site,
-        'is ': status
+        'Prediction': trueness,
+        'Language': lang,
+        'Site': site,
+        'Status': status
     }, 200)
 
 
