@@ -2,7 +2,6 @@ import requests
 import re
 import nltk
 from bs4 import BeautifulSoup
-import csv
 
 nltk.download('stopwords')
 

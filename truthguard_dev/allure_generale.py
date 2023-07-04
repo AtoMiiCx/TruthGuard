@@ -1,7 +1,6 @@
 import csv
-from spellchecker import SpellChecker
 from langdetect import detect
-
+from spellchecker import SpellChecker
 
 lang_dico = {
     "fr": "French",

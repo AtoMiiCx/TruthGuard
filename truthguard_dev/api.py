@@ -6,7 +6,6 @@ import firebase_admin
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
-import requests
 import text_treatment as tt
 import allure_generale as ag
 import source_verify as sv
@@ -65,7 +64,7 @@ def get_x_y():
     return X, Y
 
 
-# Define a function to be executed before the first request
+# Define a function to be executed before the first request // Already did once, no need to do it again
 # @app.before_request
 # def before_request():
 #    upload_articles_data(articles_json)

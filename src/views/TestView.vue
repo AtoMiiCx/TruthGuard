@@ -4,15 +4,15 @@
     <button id="testbtn" @click="verifyArticle">Check it !</button>
     <div class="result-box">
       <h2>Prediction</h2>
-      <p>Prediction : {{ prediction }}</p>
+      <p>{{ prediction }}</p>
     </div>
     <div class="result-box">
       <h2>Detected Language</h2>
-      <p>Language is {{ language }}</p>
+      <p>{{ language }}</p>
     </div>
     <div class="result-box">
       <h2>Website Status</h2>
-      <p>The website {{ site }} is {{ status }}</p>
+      <p>{{ site }} : {{ status }}</p>
     </div>
     
 </template>
